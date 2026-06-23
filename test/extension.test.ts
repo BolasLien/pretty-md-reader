@@ -1,10 +1,14 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeAll } from 'vitest'
 import MarkdownIt from 'markdown-it'
 import { activate } from '../src/extension'
 
-describe('extendMarkdownIt', () => {
-  const md = activate().extendMarkdownIt(new MarkdownIt())
+let md: MarkdownIt
 
+beforeAll(async () => {
+  md = (await activate()).extendMarkdownIt(new MarkdownIt())
+})
+
+describe('extendMarkdownIt', () => {
   it('renders GitHub/Obsidian callouts via github-alerts', () => {
     expect(md.render('> [!note]\n> hi')).toContain('markdown-alert')
   })
@@ -13,12 +17,14 @@ describe('extendMarkdownIt', () => {
     expect(md.render('> [!tip]\n> hi')).toContain('markdown-alert')
   })
 
-  it('rewrites mermaid fences via the diagrams plugin', () => {
+  it('rewrites mermaid fences to pre.mermaid', () => {
     expect(md.render('```mermaid\nA-->B\n```')).toContain('<pre class="mermaid">')
   })
 
-  it('rewrites dot fences to graphviz', () => {
-    expect(md.render('```dot\ndigraph{a->b}\n```')).toContain('<pre class="graphviz">')
+  it('renders dot fences to inline SVG', () => {
+    const out = md.render('```dot\ndigraph{a->b}\n```')
+    expect(out).toContain('<div class="graphviz">')
+    expect(out).toContain('<svg')
   })
 
   it('renders all five GitHub alert types with distinct classes', () => {

@@ -130,14 +130,14 @@ li.task-list-item input[type="checkbox"]:checked::after {
 .markdown-alert-caution .markdown-alert-title { color: #d12f2f; }
 
 /* diagrams */
-pre.mermaid, pre.graphviz {
+pre.mermaid, div.graphviz {
   background: #ffffff;
   border: 1px solid var(--pmr-border);
   border-radius: 10px;
   text-align: center;
   padding: 18px;
 }
-pre.mermaid svg, pre.graphviz svg { max-width: 100%; height: auto; }
+pre.mermaid svg, div.graphviz svg { max-width: 100%; height: auto; }
 .diagram-error {
   background: var(--pmr-code-bg);
   color: var(--pmr-code-fg);
