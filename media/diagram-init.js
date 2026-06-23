@@ -172967,11 +172967,11 @@ ${prefix}${Math.round(value2 * 100) / 100}${suffix}`;
       const id33 = "m" + Math.random().toString(36).slice(2);
       const { svg: svg2 } = await mermaid_default.render(id33, src);
       el.innerHTML = svg2;
-      el.classList.add("diagram-rendered");
-    } catch {
-      el.dataset.rendered = "";
+    } catch (e3) {
+      console.error("pretty-md-reader: failed to render mermaid diagram", e3);
       showError(el, src);
     }
+    el.classList.add("diagram-rendered");
   }
   async function renderGraphviz(el) {
     if (el.dataset.rendered) return;
@@ -172980,11 +172980,11 @@ ${prefix}${Math.round(value2 * 100) / 100}${suffix}`;
     try {
       const gv = await getGraphviz();
       el.innerHTML = gv.dot(src);
-      el.classList.add("diagram-rendered");
-    } catch {
-      el.dataset.rendered = "";
+    } catch (e3) {
+      console.error("pretty-md-reader: failed to render graphviz diagram", e3);
       showError(el, src);
     }
+    el.classList.add("diagram-rendered");
   }
   function renderAll() {
     document.querySelectorAll("pre.mermaid:not(.diagram-rendered)").forEach((el) => void renderMermaid(el));

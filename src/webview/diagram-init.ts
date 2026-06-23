@@ -22,11 +22,11 @@ async function renderMermaid(el: HTMLElement): Promise<void> {
     const id = 'm' + Math.random().toString(36).slice(2)
     const { svg } = await mermaid.render(id, src)
     el.innerHTML = svg
-    el.classList.add('diagram-rendered')
-  } catch {
-    el.dataset.rendered = ''
+  } catch (e) {
+    console.error('pretty-md-reader: failed to render mermaid diagram', e)
     showError(el, src)
   }
+  el.classList.add('diagram-rendered')
 }
 
 async function renderGraphviz(el: HTMLElement): Promise<void> {
@@ -36,11 +36,11 @@ async function renderGraphviz(el: HTMLElement): Promise<void> {
   try {
     const gv = await getGraphviz()
     el.innerHTML = gv.dot(src)
-    el.classList.add('diagram-rendered')
-  } catch {
-    el.dataset.rendered = ''
+  } catch (e) {
+    console.error('pretty-md-reader: failed to render graphviz diagram', e)
     showError(el, src)
   }
+  el.classList.add('diagram-rendered')
 }
 
 function renderAll(): void {
