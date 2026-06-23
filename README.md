@@ -5,7 +5,7 @@ Obsidian-style pretty rendering for VS Code's built-in Markdown preview. Elevate
 ## Features
 
 - **Obsidian-style Light Theme**: A clean, readable light theme inspired by Obsidian's design philosophy
-- **GitHub/Obsidian Callouts**: Support for 5 callout types (Note, Abstract, Info, Tip, Warning, Caution, Important, Example, Quote) with Obsidian-compatible syntax
+- **GitHub/Obsidian Callouts**: Support for the 5 GitHub alert types (Note, Tip, Important, Warning, Caution), with case-insensitive Obsidian-style `> [!note]` syntax
 - **Mermaid Diagrams**: Render Mermaid flowcharts, sequence diagrams, class diagrams, and more
 - **Graphviz (Dot) Diagrams**: Support for Graphviz dot syntax for advanced graph rendering
 - **Styled Task Lists**: Beautiful checkboxes for Markdown task lists
