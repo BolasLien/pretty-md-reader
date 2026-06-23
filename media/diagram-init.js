@@ -170582,33 +170582,35 @@ ${prefix}${Math.round(value2 * 100) / 100}${suffix}`;
 
   // src/webview/diagram-init.ts
   mermaid_default.initialize({ startOnLoad: false, theme: "default", securityLevel: "strict" });
-  var running = false;
-  var rerunQueued = false;
+  var fontsReady = document.fonts?.ready ?? Promise.resolve();
   async function renderMermaid() {
-    if (running) {
-      rerunQueued = true;
-      return;
-    }
     const nodes5 = Array.from(
       document.querySelectorAll("pre.mermaid:not([data-processed])")
     );
     if (nodes5.length === 0) return;
-    running = true;
-    try {
-      await mermaid_default.run({ nodes: nodes5 });
-    } catch (e3) {
-      console.error("pretty-md-reader: mermaid render failed", e3);
-    } finally {
-      running = false;
-      if (rerunQueued) {
-        rerunQueued = false;
-        void renderMermaid();
+    await fontsReady;
+    for (const el of nodes5) {
+      if (el.dataset.processed) continue;
+      el.dataset.processed = "1";
+      const src = el.textContent ?? "";
+      try {
+        const id33 = "pmr-mermaid-" + Math.random().toString(36).slice(2);
+        const { svg: svg2 } = await mermaid_default.render(id33, src);
+        el.innerHTML = svg2;
+      } catch (e3) {
+        console.error("pretty-md-reader: mermaid render failed", e3);
+        el.textContent = src;
+        el.classList.add("diagram-error");
       }
     }
   }
   var observer = new MutationObserver(() => void renderMermaid());
-  observer.observe(document.body, { childList: true, subtree: true });
-  void renderMermaid();
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => void renderMermaid());
+  } else {
+    void renderMermaid();
+  }
 })();
 /*! Bundled license information:
 
