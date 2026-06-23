@@ -1,0 +1,35 @@
+{
+  "name": "pretty-md-reader",
+  "displayName": "Pretty MD Reader",
+  "description": "Obsidian-style pretty rendering for the built-in Markdown preview, with callouts, Mermaid and Graphviz diagrams.",
+  "version": "0.0.1",
+  "publisher": "bolaslien",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "keywords": ["markdown", "preview", "mermaid", "graphviz", "callouts"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "markdown.previewStyles": ["./media/preview.css"],
+    "markdown.previewScripts": ["./media/diagram-init.js"],
+    "markdown.markdownItPlugins": true
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "test": "vitest run",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@hpcc-js/wasm-graphviz": "^1.7.0",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.21.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-github-alerts": "^0.3.0",
+    "mermaid": "^11.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
