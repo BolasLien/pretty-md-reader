@@ -9,3 +9,6 @@ build.mjs
 tsconfig.json
 vitest.config.ts
 **/*.map
+.gitignore
+prd.md
+*.vsix
