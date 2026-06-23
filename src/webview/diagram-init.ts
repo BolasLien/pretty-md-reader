@@ -1,7 +1,7 @@
 import mermaid from 'mermaid'
 import { Graphviz } from '@hpcc-js/wasm-graphviz'
 
-mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' })
+mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'strict' })
 
 let graphvizPromise: Promise<Graphviz> | null = null
 const getGraphviz = () => (graphvizPromise ??= Graphviz.load())

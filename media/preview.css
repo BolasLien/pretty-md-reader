@@ -123,6 +123,7 @@ li.task-list-item input[type="checkbox"]:checked::after {
 .markdown-alert-tip     { border-left-color: #2ecc71; }
 .markdown-alert-tip     .markdown-alert-title { color: #1e9e57; }
 .markdown-alert-important { border-left-color: var(--pmr-accent-soft); }
+.markdown-alert-important .markdown-alert-title { color: var(--pmr-accent-soft); }
 .markdown-alert-warning { border-left-color: #f0a020; }
 .markdown-alert-warning .markdown-alert-title { color: #c47e10; }
 .markdown-alert-caution { border-left-color: #ef4444; }

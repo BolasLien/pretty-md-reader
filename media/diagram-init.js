@@ -172949,7 +172949,7 @@ ${prefix}${Math.round(value2 * 100) / 100}${suffix}`;
   };
 
   // src/webview/diagram-init.ts
-  mermaid_default.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+  mermaid_default.initialize({ startOnLoad: false, theme: "default", securityLevel: "strict" });
   var graphvizPromise = null;
   var getGraphviz = () => graphvizPromise ?? (graphvizPromise = Et.load());
   function showError(el, src) {
