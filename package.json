@@ -5,10 +5,13 @@
   "version": "0.0.1",
   "publisher": "bolaslien",
   "license": "MIT",
+  "icon": "icon.png",
+  "repository": { "type": "git", "url": "https://github.com/bolaslien/pretty-md-reader.git" },
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Other"],
   "keywords": ["markdown", "preview", "mermaid", "graphviz", "callouts"],
   "main": "./out/extension.js",
+  "activationEvents": ["onLanguage:markdown"],
   "contributes": {
     "markdown.previewStyles": ["./media/preview.css"],
     "markdown.previewScripts": ["./media/diagram-init.js"],
