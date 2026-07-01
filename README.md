@@ -12,6 +12,17 @@ Obsidian-style pretty rendering for VS Code's built-in Markdown preview. Elevate
 - **Enhanced Tables**: Purple header, zebra striping, and rounded corners for a polished look
 - **Cross-Platform**: Consistent rendering across Windows, macOS, and Linux
 
+## Color theme
+
+Choose the preview's accent color in VS Code settings:
+
+- Open Settings and search for **Pretty MD Reader: Theme**, or set `prettyMdReader.theme` in `settings.json`.
+- Presets (all light): `purple` (default), `blue`, `green`, `rose`.
+
+Only the accent family changes (headings, links, table headers, callout titles, inline code). Body text and code blocks stay the same across presets.
+
+> After changing the theme, reload the open preview (edit the document, or close and reopen the preview) for the new accent to take effect.
+
 ## How to Use
 
 1. Open any Markdown file in VS Code
