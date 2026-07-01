@@ -2,7 +2,7 @@
   "name": "pretty-md-reader",
   "displayName": "Pretty MD Reader",
   "description": "Obsidian-style pretty rendering for the built-in Markdown preview, with callouts, Mermaid and Graphviz diagrams.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "bolaslien",
   "license": "MIT",
   "icon": "icon.png",
@@ -15,7 +15,24 @@
   "contributes": {
     "markdown.previewStyles": ["./media/preview.css"],
     "markdown.previewScripts": ["./media/diagram-init.js"],
-    "markdown.markdownItPlugins": true
+    "markdown.markdownItPlugins": true,
+    "configuration": {
+      "title": "Pretty MD Reader",
+      "properties": {
+        "prettyMdReader.theme": {
+          "type": "string",
+          "enum": ["purple", "blue", "green", "rose"],
+          "enumDescriptions": [
+            "Obsidian-style purple (default)",
+            "Blue accent",
+            "Green accent",
+            "Rose accent"
+          ],
+          "default": "purple",
+          "description": "Accent color theme for the Markdown preview. Reload the preview to apply a change."
+        }
+      }
+    }
   },
   "scripts": {
     "build": "node build.mjs",
