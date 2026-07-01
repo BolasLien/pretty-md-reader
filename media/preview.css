@@ -33,7 +33,7 @@ a:hover { text-decoration: underline; }
 code {
   font-family: "JetBrains Mono", "SF Mono", Consolas, monospace;
   background: var(--pmr-accent-bg);
-  color: var(--pmr-accent-soft);
+  color: var(--pmr-accent);
   padding: 2px 6px;
   border-radius: 5px;
   font-size: 0.88em;
